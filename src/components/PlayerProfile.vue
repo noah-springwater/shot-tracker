@@ -1,8 +1,8 @@
 <template>
   <div class="player-profile">
-    <div v-for="player in this.players" class="parent">
-      <span>{{ player.name }}</span>
-      <span>{{ player.number }}</span>
+   <router-link to="/">Home</router-link>
+    <div class="parent-container">
+      <span>hello {{ this.players[$route.params.id].name }}</span>
     </div>
   </div>
 </template>

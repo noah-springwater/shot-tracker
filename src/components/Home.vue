@@ -1,9 +1,10 @@
 <template>
   <div class="home-container">
-    <!-- <div v-for="player in this.players" class="parent">
+    <router-link to="/player">Player Profile</router-link>
+    <div v-for="player in this.players" class="parent" @click="goToPlayer(player.id)">
       <span>{{ player.name }}</span>
       <span>{{ player.number }}</span>
-    </div> -->
+    </div>
   </div>
 </template>
 
@@ -13,7 +14,12 @@ import data from '../data'
 export default {
   data () {
     return {
-      // 'players': data.players
+      'players': data.players
+    }
+  },
+  methods: {
+    goToPlayer (id) {
+      this.$router.push({name: 'player', params: { id: id }})
     }
   }
 }
