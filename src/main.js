@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   firebase: {
-    player: firebase.database.ref('player')
+    players: firebase.database.ref('players')
   },
   router,
   template: '<App/>',
