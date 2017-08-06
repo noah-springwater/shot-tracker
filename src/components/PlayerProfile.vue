@@ -8,7 +8,7 @@
       </div> -->
     </div>
     <div class="name-container">
-        <span>{{ this.pictures[$route.params.id].first_name }}</span>
+        <span>{{ this.$route.params.id }}</span>
     </div>
   </div>
 </template>
