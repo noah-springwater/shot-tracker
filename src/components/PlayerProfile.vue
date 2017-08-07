@@ -1,12 +1,13 @@
 <template>
   <div class="player-profile">
-   <router-link to="/">Home</router-link>
-    <div class="parent-container">
-      <!-- <div class="input-container">
-      </div>
-      <div class="button-container">
-      </div> -->
-    </div>
+   <router-link to="/home">Home</router-link>
+   <form class="input-container">
+     <input v-model="drill_name" type="text" placeholder="Drill" required>
+     <input v-model="score" type="text" placeholder="Score" required>
+   </form>
+   <div class="button-container">
+     <button v-on:click.prevent="addDrill"></button>
+   </div>
     <div class="name-container">
         <span>{{ this.$route.params.id }}</span>
     </div>
@@ -17,29 +18,22 @@
 export default {
   data () {
     return {
-      // 'first_name': '',
-      // 'last_name': '',
-      // 'drill_name': '',
-      // 'score': ''
+      'drill_name': '',
+      'score': '',
+      currentId: ''
     }
+  },
+  methods: {
+    // addDrill () {
+    //   this.$root.$firebaseRefs.drills.push(
+    //     {
+    //       'drill_name': this.drill_name,
+    //       'score': this.score,
+    //       'created_at': -1 * new Date().getTime()
+    //     }
+    //   )
+    // }
   }
-  // methods: {
-  //   addPlayer () {
-  //     this.$root.$firebaseRefs.players.push(
-  //       {
-  //         'first_name': this.first_name,
-  //         'last_name': this.last_name,
-  //         'drill_name': this.drill_name,
-  //         'score': this.score,
-  //         'created_at': -1 * new Date().getTime()
-  //       }
-  //     ).then(
-  //       this.$router.push('/')
-  //     )
-  //
-  //     console.log('pushed')
-  //   }
-  // }
 }
 </script>
 

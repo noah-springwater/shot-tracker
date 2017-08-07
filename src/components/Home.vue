@@ -11,7 +11,7 @@
         <button v-on:click.prevent="addPlayer"></button>
       </div>
     </div>
-    <div class="players-container" v-for="player in this.$root.players" @click="goToPlayer(player.number, player.first_name, player.last_name, player.number, player.first_name + ' ' + player.last_name)">
+    <div class="players-container" v-for="player in this.$root.players" @click="goToPlayer(player['.key'], player.first_name, player.last_name, player.number, player.first_name + ' ' + player.last_name, player.drills)">
       <span>{{ player.first_name }} {{ player.last_name }} {{ player.number }} {{ player['.key'] }}</span>
     </div>
   </div>
@@ -24,12 +24,13 @@ export default {
     return {
       'first_name': '',
       'last_name': '',
-      'number': ''
+      'number': '',
+      'drills': []
     }
   },
   methods: {
-    goToPlayer (id, firstName, lastName, number, fullName) {
-      this.$router.push({name: 'player', params: { id: id, firstName: firstName, lastName: lastName, number: number, fullName: fullName }})
+    goToPlayer (id, firstName, lastName, number, fullName, drills) {
+      this.$router.push({name: 'player', params: { id: id, firstName: firstName, lastName: lastName, number: number, fullName: fullName, drills: drills }})
     },
     addPlayer () {
       function timeStamp () {
@@ -62,9 +63,8 @@ export default {
           'created_at': timeStamp()
         }
       ).then(
-        this.$router.push('/')
+        this.$router.push('/home')
       )
-
       this.first_name = ''
       this.last_name = ''
       this.number = ''
